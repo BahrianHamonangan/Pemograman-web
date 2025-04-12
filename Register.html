@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Form Registrasi</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <nav style="background-color: #e0e0e0; padding: 10px">
+      <ul style="list-style-type: none; margin: 0; padding: 0">
+        <li style="display: inline; margin-right: 10px">
+          <a href="index.html">Beranda</a>
+        </li>
+        <li style="display: inline; margin-right: 10px">
+          <a href="biodata.html">Biodata</a>
+        </li>
+        <li style="display: inline; margin-right: 10px">
+          <a href="kontak.html">Kontak</a>
+        </li>
+        <li style="display: inline; margin-right: 10px">
+          <a href="Login.html">Login</a>
+        </li>
+      </ul>
+    </nav>
+
+    <img
+      src="img/bg Dante.jpg.jpeg"
+      width="100%"
+      height="500px"
+      style="margin-top: 10px"
+    />
+
+    <div style="display: flex; padding: 20px">
+      <div style="flex: 3; padding-right: 20px">
+        <img
+          src="img/Judul.jpeg"
+          alt="foto profil"
+          class="profile-pic"
+          width="400px"
+          height="160px"
+          style="margin-top: 20px"
+        />
+
+        <form id="registrasiForm">
+          <fieldset>
+            <legend>Registrasi</legend>
+            <p>
+              <label>Nama:</label>
+              <input
+                type="text"
+                name="nama"
+                placeholder="username..."
+                id="nama"
+                required
+              />
+            </p>
+            <p>
+              <label>Email:</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="your email..."
+                id="email"
+                required
+              />
+            </p>
+            <p>
+              <label>Tanggal Lahir:</label>
+              <input type="date" name="tanggal" id="tanggal" required />
+            </p>
+            <p>
+              <label>Password:</label>
+              <input
+                type="password"
+                name="password"
+                placeholder="password"
+                id="registrasi_password"
+                required
+              />
+            </p>
+            <p>
+              <label>Jenis Kelamin:</label>
+              <label
+                ><input
+                  type="radio"
+                  name="jenis_kelamin"
+                  value="laki-laki"
+                  id="laki"
+                  required
+                />
+                Laki-laki</label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="jenis_kelamin"
+                  value="perempuan"
+                  id="perempuan"
+                  required
+                />
+                Perempuan</label
+              >
+            </p>
+            <p>
+              <label>Agama:</label>
+              <select name="agama" id="agama" required>
+                <option value="islam">Islam</option>
+                <option value="kristen">Kristen</option>
+                <option value="hindu">Hindu</option>
+                <option value="budha">Budha</option>
+              </select>
+            </p>
+            <p>
+              <label>Biografi:</label>
+              <textarea name="biografi" id="biografi"></textarea>
+            </p>
+            <p>
+              <button type="button" onclick="KonfirmasiRegistrasi()">
+                Daftar
+              </button>
+            </p>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
+    <footer
+      style="background-color: #e0e0e0; padding: 10px; text-align: center"
+    >
+      <p>&copy; Devil May Cry Community. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+      function KonfirmasiRegistrasi() {
+        var nama = document.getElementById("nama").value;
+        var email = document.getElementById("email").value;
+        var tanggal = document.getElementById("tanggal").value;
+        var password = document.getElementById("registrasi_password").value;
+        var jenis_kelamin = document.querySelector(
+          'input[name="jenis_kelamin"]:checked'
+        );
+        var agama = document.getElementById("agama").value;
+        var biografi = document.getElementById("biografi").value;
+
+        var jenis_kelaminValue = jenis_kelamin
+          ? jenis_kelamin.value
+          : "Tidak dipilih";
+
+        var konfirmasi =
+          "Konfirmasi Registrasi:\n\n" +
+          "Nama: " +
+          nama +
+          "\n" +
+          "Email: " +
+          email +
+          "\n" +
+          "Tanggal Lahir: " +
+          tanggal +
+          "\n" +
+          "Password: " +
+          password +
+          "\n" +
+          "Jenis Kelamin: " +
+          jenis_kelaminValue +
+          "\n" +
+          "Agama: " +
+          agama +
+          "\n" +
+          "Biografi: " +
+          biografi;
+
+        alert(konfirmasi);
+
+        var userData = {
+          nama: nama,
+          email: email,
+          tanggal: tanggal,
+          password: password,
+          jenis_kelamin: jenis_kelaminValue,
+          agama: agama,
+          biografi: biografi,
+        };
+        localStorage.setItem("user", JSON.stringify(userData));
+
+        document.getElementById("registrasiForm").reset();
+      }
+    </script>
+  </body>
+</html>
