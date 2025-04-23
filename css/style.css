@@ -2,7 +2,7 @@ body {
   font-family: "poppins", sans-serif;
   line-height: 1.6;
   margin: 20px;
-  background-color: #ffffff;
+  background-color: #faf6f6;
   color: #333;
 }
 
@@ -66,9 +66,86 @@ img {
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+q .content-wrapper {
+  display: flex;
+  padding: 20px;
+  flex-direction: row;
+}
+
+.main-content {
+  flex: 3;
+  padding-right: 20px;
+}
+
+.column {
+  float: left;
+  padding: 10px;
+}
+
+.column.side {
+  width: 25%;
+}
+
+.column.middle {
+  width: 30%;
+}
+
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
 footer {
   background-color: #e0e0e0;
   padding: 10px;
   text-align: center;
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  .column.side,
+  .column.middle {
+    width: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .main-content {
+    padding-right: 0;
+    margin-bottom: 20px;
+  }
+
+  nav ul {
+    text-align: left;
+  }
+
+  nav li {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  iframe {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    margin: 10px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  h2 {
+    font-size: 1.2em;
+  }
 }
